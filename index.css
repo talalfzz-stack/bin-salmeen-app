@@ -1,0 +1,218 @@
+/* ===== إعدادات أساسية ===== */
+body {
+  margin: 0;
+  font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  transition: all 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Force English numerals and behavior for all inputs */
+input, select, textarea {
+  font-variant-numeric: lining-nums;
+  -moz-font-feature-settings: "lnum";
+  -webkit-font-feature-settings: "lnum";
+  font-feature-settings: "lnum";
+}
+
+/* Ensure data inputs respect English locale hints */
+input[type="date"], input[type="time"], input[type="number"] {
+  unicode-bidi: plaintext;
+}
+
+/* ===== دعم الأيقونات ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* التأكد من ظهور الأيقونات وتلوينها باللون الرئيسي */
+svg,
+[class*="Fa"],
+[class*="fa-"],
+[class*="Md"],
+[class*="Gi"],
+[class*="Ri"],
+[class*="Bi"],
+[class*="Hi"],
+[class*="Ai"],
+[class*="Io"],
+[class*="Ti"],
+[class*="Go"],
+[class*="Fi"] {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: var(--primary-color) !important;
+  fill: currentColor !important;
+}
+
+/* ===== الوضع المظلم ===== */
+body.dark-mode {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+/* ===== ===== إعدادات الطباعة ===== ===== */
+@page {
+  size: A4;
+  margin: 8mm;
+}
+
+@media print {
+
+  /* إخفاء كل شيء خارج الفاتورة */
+  body * {
+    visibility: hidden;
+  }
+
+  /* إظهار الفاتورة فقط */
+  .invoice-container,
+  .invoice-container * {
+    visibility: visible;
+  }
+
+  .invoice-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: white;
+    direction: rtl;
+  }
+
+  /* ورقة A4 */
+  .invoice-paper {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 6mm;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    background: white;
+  }
+
+  /* إخفاء عناصر الشاشة */
+  .no-print,
+  .action-buttons,
+  .card,
+  .page-number,
+  .header,
+  .sidebar,
+  .main-wrapper {
+    display: none !important;
+  }
+
+  /* إظهار هيدر الطباعة فقط */
+  .print-only {
+    display: block !important;
+  }
+
+  /* جدول */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    margin-top: 10px;
+  }
+
+  th,
+  td {
+    border: 1px solid #000;
+    padding: 4px;
+    text-align: center;
+  }
+
+  /* معلومات الفاتورة */
+  .invoice-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 10px 0;
+  }
+
+  /* المجاميع */
+  .summary-box {
+    margin-top: 12px;
+    font-size: 12px;
+  }
+
+  .grand-total {
+    font-weight: bold;
+    font-size: 13px;
+  }
+
+  /* منع انقسام الصفحة */
+  table,
+  tr,
+  td,
+  th,
+  .summary-box,
+  .invoice-info {
+    page-break-inside: avoid;
+  }
+
+  /* ================= WATERMARK LOGO ================= */
+  .watermark-logo {
+    display: block !important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    opacity: 0.07;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ================= FOOTER ================= */
+  .invoice-footer {
+    position: fixed;
+    bottom: 12mm;
+    left: 15mm;
+    right: 15mm;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.6;
+    color: #000;
+  }
+
+  .footer-ar {
+    direction: rtl;
+    font-weight: 600;
+  }
+
+  .footer-en {
+    direction: ltr;
+    font-size: 10.5px;
+  }
+}
+
+/* ===== تحسينات للأيقونات في القائمة الجانبية ===== */
+.sidebar .nav-icon svg,
+.sidebar .bottom-button svg {
+  font-size: 20px;
+  min-width: 24px;
+}
+
+.sidebar.collapsed .nav-icon svg,
+.sidebar.collapsed .bottom-button svg {
+  font-size: 24px;
+}
+
+/* التأكد من ظهور الأيقونات في الوضع المصغر */
+.sidebar.collapsed .nav-item,
+.sidebar.collapsed .bottom-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.sidebar.collapsed .nav-icon,
+.sidebar.collapsed .bottom-button svg {
+  display: block !important;
+  visibility: visible !important;
+}

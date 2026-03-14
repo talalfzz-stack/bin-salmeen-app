@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
+
+  <!-- Mobile Icon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#165a6f" />
+
+  <meta name="description" content="Bin Salmeen Sales and Accounting System" />
+
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+  <title>Bin Salmeen System</title>
+
+  <style>
+    #loading-screen {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    #loading-screen img {
+      width: 120px;
+      margin-bottom: 25px;
+    }
+
+    #loading-text {
+      color: #165a6f;
+      font-family: Arial;
+      margin-bottom: 20px;
+    }
+
+    #loading-bar {
+      width: 200px;
+      height: 6px;
+      background: #eee;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    #loading-progress {
+      height: 100%;
+      width: 40%;
+      background: #165a6f;
+      animation: loadingMove 1.5s infinite;
+    }
+
+    @keyframes loadingMove {
+      0% {
+        margin-left: -40%;
+      }
+
+      100% {
+        margin-left: 100%;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <noscript>You need to enable JavaScript to run this system.</noscript>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+
+    <img src="%PUBLIC_URL%/logo192.png" alt="Bin Salmeen">
+
+    <div id="loading-text">Loading System...</div>
+
+    <div id="loading-bar">
+      <div id="loading-progress"></div>
+    </div>
+
+  </div>
+
+  <div id="root"></div>
+
+  <script>
+    window.addEventListener("load", function () {
+
+      const loader = document.getElementById("loading-screen");
+
+      setTimeout(() => {
+        loader.style.opacity = "0";
+
+        setTimeout(() => {
+          loader.style.display = "none";
+        }, 500);
+
+      }, 500);
+
+    });
+  </script>
+
+</body>
+
+</html>
